@@ -2,20 +2,296 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: "Nohemi", sans-serif;
+  font-weight: 900;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+main {
+  background-image: url("/images/space.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.h2g2 {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rotateY)) rotateY(var(--rotateX));
+
+  perspective: 5000px;
+}
+
+.front-panel,
+.front-panel-backside {
+  transform-origin: left;
+}
+
+.front-panel.is-open {
+  transform: rotateY(-135deg);
+}
+
+.front-panel-backside::before {
+  transform: rotateY(180deg);
+}
+
+.front-panel-backside.is-open {
+  transform: rotateY(-134.9deg);
+}
+
+.top-panel {
+  transform: translateY(-2rem) translateZ(-2rem) rotateX(90deg);
+}
+
+.right-panel {
+  transform: translateX(2rem) translateZ(-2rem) rotateY(90deg);
+}
+
+.bottom-panel {
+  transform: translateY(2rem) translateZ(-2rem) rotateX(90deg);
+}
+
+.left-panel {
+  transform: translateX(-2rem) translateZ(-2rem) rotateY(90deg);
+}
+
+.leather::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/images/leather.png");
+
+  background-position: center;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.shiny-leather::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(
+      farthest-corner circle at var(--pointerX) var(--pointerY),
+      rgba(255, 255, 255, 0.5),
+      transparent 50%
+    ),
+    url("/images/leather.png");
+
+  background-position: center;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+
+  transition: background-position 0.1s ease-in-out;
+}
+
+.metal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/images/metal.png");
+
+  background-position: center;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.paper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/images/paper.png");
+
+  background-position: center;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.shiny-display::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 4px,
+    rgba(0, 0, 0, 0.05) 4px,
+    rgba(0, 0, 0, 0.05) 8px
+  );
+
+  background-size: 100% 100%;
+  background-position:
+    center,
+    0 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+
+  transition: transform 100ms ease-in-out;
+
+  animation: scrollGradient 8s linear infinite;
+}
+
+@keyframes scrollGradient {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50%);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.shiny-display::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(
+    farthest-corner circle at var(--pointerX) var(--pointerY),
+    rgba(255, 255, 255, 0.25),
+    transparent 50%
+  );
+
+  background-size: 100% 100%;
+  background-position:
+    center,
+    100% 8px;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.shiny-metal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(
+      farthest-corner circle at var(--pointerX) var(--pointerY),
+      rgba(255, 255, 255, 0.25),
+      transparent 50%
+    ),
+    url("/images/metal.png");
+
+  background-position: center;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+
+  transition: background-position 0.1s ease-in-out;
+}
+
+.display {
+  font-family: "System", monospace;
+  font-size: 1.5rem;
+
+  color: theme("colors.lightGreen");
+  text-shadow: theme("colors.lightGreen") 2px 0 0.5rem;
+}
+
+.display-right-panel {
+  transform: translateX(1rem) translateZ(-1rem) rotateY(90deg);
+}
+
+.blinking-cursor::after {
+  content: "❚";
+
+  font-size: 1.5rem;
+
+  animation: blink 2s step-start infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.keyboard-front-panel {
+  transform: translateZ(-2rem);
+  transform-style: preserve-3d;
+}
+
+.keyboard-front-panel.is-open {
+  transform: translateX(420px) translateZ(-2rem);
+}
+
+.keyboard-top-panel {
+  transform: translateY(-1rem) translateZ(-3rem) rotateX(90deg);
+}
+
+.keyboard-top-panel.is-open {
+  transform: translateX(420px) translateY(-1rem) translateZ(-3rem)
+    rotateX(90deg);
+}
+
+.keyboard-right-panel {
+  transform: translateX(1rem) translateZ(-3rem) rotateY(90deg);
+}
+
+.keyboard-right-panel.is-open {
+  transform: translateX(436px) translateZ(-3rem) rotateY(90deg);
+}
+
+.keyboard-bottom-panel {
+  transform: translateY(1rem) translateZ(-3rem) rotateX(90deg);
+}
+
+.keyboard-bottom-panel.is-open {
+  transform: translateX(420px) translateY(1rem) translateZ(-3rem) rotateX(90deg);
+}
+
+.note {
+  font-family: "Naturaly", sans-serif;
+  font-size: 1.5rem;
+}
+
+@font-face {
+  font-family: "Nohemi";
+  src: url("/fonts/NohemiVF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "System";
+  src: url("/fonts/System.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Naturaly";
+  src: url("/fonts/Naturaly.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }

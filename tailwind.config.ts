@@ -9,8 +9,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        darkPink: "#CC3351",
+        darkestPurple: "#29203F",
+        darkPurple: "#434370",
+        purple: "#596C9B",
+        lightPurple: "#617BAF",
+        darkGreen: "#137570",
+        green: "#178380",
+        lightGreen: "#5FCCB9",
+        paper: "#F6EEE3",
+      },
+      spacing: {
+        "26": "104px",
+        "105": "420px",
+        "128": "32rem",
       },
     },
   },
