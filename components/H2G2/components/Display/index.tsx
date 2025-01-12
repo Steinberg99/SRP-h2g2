@@ -1,6 +1,5 @@
 // External
 import { useContext, useEffect, useRef, useState } from "react";
-import TypeIt from "typeit-react";
 
 // Internal
 import { LogicContext } from "@/contexts/LogicContext";
