@@ -1,3 +1,5 @@
+"use client";
+
 // External
 import { useContext, useState } from "react";
 
@@ -22,7 +24,7 @@ const SpaceButton = () => {
   return (
     <button
       onClick={handleClick}
-      className="preserve-3d w-26 relative flex h-8 cursor-pointer items-center justify-center border-2 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
+      className="preserve-3d relative flex h-8 w-26 cursor-pointer items-center justify-center border-2 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
       style={{
         transform: `translateZ(${isPressed ? "0" : "1rem"})`,
         pointerEvents: isPressed ? "none" : "auto",
@@ -35,7 +37,7 @@ const SpaceButton = () => {
       </div>
 
       <div
-        className="metal w-26 absolute -top-[2px] h-4 border-2 border-b-0 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
+        className="metal absolute -top-[2px] h-4 w-26 border-2 border-b-0 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
         style={{
           transform: `translateZ(${isPressed ? "-1rem" : "0"}) rotateX(-90deg)`,
           transformOrigin: "top",
@@ -51,7 +53,7 @@ const SpaceButton = () => {
       />
 
       <div
-        className="metal w-26 absolute -bottom-[2px] h-4 border-2 border-t-0 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
+        className="metal absolute -bottom-[2px] h-4 w-26 border-2 border-t-0 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
         style={{
           transform: `translateZ(${isPressed ? "-1rem" : "0"}) rotateX(90deg)`,
           transformOrigin: "bottom",

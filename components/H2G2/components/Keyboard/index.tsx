@@ -1,11 +1,13 @@
+"use client";
+
 // External
 import clsx from "clsx";
 import { useContext, useEffect, useRef } from "react";
 
 // Internal
 import { LogicContext } from "@/contexts/LogicContext";
-import DontPanic from "@/public/images/dont-panic.svg";
-import Logo from "@/public/images/logo.svg";
+import DontPanic from "@/components/DontPanic";
+import Logo from "@/components/Logo";
 
 // Siblings
 import Button from "./components/Button";
@@ -46,7 +48,7 @@ const Display = () => {
       <div
         ref={ref}
         className={clsx(
-          "keyboard-front-panel w-105 absolute right-0 flex h-128 flex-col items-center justify-between bg-lightPurple p-8 transition-transform duration-300 ease-in-out",
+          "keyboard-front-panel absolute right-0 flex h-128 w-105 flex-col items-center justify-between bg-lightPurple p-8 transition-transform duration-300 ease-in-out",
           {
             "is-open": isOpen,
           },
@@ -91,13 +93,13 @@ const Display = () => {
             </div>
           </div>
 
-          <Logo className="mb-2 w-8 fill-darkPurple"></Logo>
+          <Logo className="mb-2 w-8 fill-darkPurple" />
         </div>
       </div>
 
       <div
         className={clsx(
-          "keyboard-top-panel metal w-105 absolute right-0 -z-10 h-8 bg-lightPurple transition-transform duration-300 ease-in-out",
+          "keyboard-top-panel metal absolute right-0 -z-10 h-8 w-105 bg-lightPurple transition-transform duration-300 ease-in-out",
           {
             "is-open": isOpen,
           },
@@ -115,7 +117,7 @@ const Display = () => {
 
       <div
         className={clsx(
-          "keyboard-bottom-panel metal w-105 absolute bottom-0 right-0 -z-10 h-8 bg-lightPurple transition-transform duration-300 ease-in-out",
+          "keyboard-bottom-panel metal absolute bottom-0 right-0 -z-10 h-8 w-105 bg-lightPurple transition-transform duration-300 ease-in-out",
           {
             "is-open": isOpen,
           },

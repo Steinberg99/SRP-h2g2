@@ -1,3 +1,5 @@
+"use client";
+
 // External
 import { useContext, useEffect, useRef, useState } from "react";
 

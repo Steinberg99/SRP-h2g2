@@ -6,8 +6,8 @@ import { useContext, useEffect, useRef } from "react";
 
 // Internal
 import { LogicContext } from "@/contexts/LogicContext";
-import DontPanic from "@/public/images/dont-panic.svg";
-import Logo from "@/public/images/logo.svg";
+import DontPanic from "@/components/DontPanic";
+import Logo from "@/components/Logo";
 
 const Cover = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -46,7 +46,7 @@ const Cover = () => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div
-          className="note paper bg-paper relative left-1/4 top-1/4 flex h-64 w-64 flex-col gap-x-8 p-8"
+          className="note paper relative left-1/4 top-1/4 flex h-64 w-64 flex-col gap-x-8 bg-paper p-8"
           style={{ transform: "rotateY(180deg)", rotate: "11deg" }}
         >
           <span>Entries to remember!</span>

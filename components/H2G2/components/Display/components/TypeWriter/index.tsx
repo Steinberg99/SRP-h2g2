@@ -1,3 +1,5 @@
+"use client";
+
 // External
 import clsx from "clsx";
 import React, { useState, useEffect } from "react";
