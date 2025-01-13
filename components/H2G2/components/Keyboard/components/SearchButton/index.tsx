@@ -8,19 +8,21 @@ import { LogicContext } from "@/contexts/LogicContext";
 
 const SearchButton = () => {
   const [isPressed, setIsPressed] = useState(false);
-  const { pressedCharacters, search, setMessages, setPressedCharacters } =
+  const { isOn, pressedCharacters, search, setMessages, setPressedCharacters } =
     useContext(LogicContext);
 
   const handleClick = () => {
-    setIsPressed(true);
+    if (!isPressed && isOn) {
+      setIsPressed(true);
 
-    setMessages((prev: string[]) => [...prev, pressedCharacters]);
-    search(pressedCharacters);
-    setPressedCharacters("");
+      setMessages((prev: string[]) => [...prev, pressedCharacters]);
+      search(pressedCharacters);
+      setPressedCharacters("");
 
-    setTimeout(() => {
-      setIsPressed(false);
-    }, 300);
+      setTimeout(() => {
+        setIsPressed(false);
+      }, 300);
+    }
   };
 
   return (

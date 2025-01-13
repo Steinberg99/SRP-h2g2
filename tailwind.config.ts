@@ -18,6 +18,9 @@ export default {
         green: "#178380",
         lightGreen: "#5FCCB9",
         paper: "#F6EEE3",
+        lightRed: "#DC143C",
+        red: "#A52A2A",
+        charcoal: "#212121",
       },
       spacing: {
         "26": "104px",

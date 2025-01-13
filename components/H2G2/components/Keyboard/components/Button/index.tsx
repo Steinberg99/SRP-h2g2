@@ -8,11 +8,11 @@ import { useContext, useState } from "react";
 import { LogicContext } from "@/contexts/LogicContext";
 
 const Button = ({ character }: { character: string }) => {
-  const { setPressedCharacters } = useContext(LogicContext);
+  const { isOn, setPressedCharacters } = useContext(LogicContext);
   const [isPressed, setIsPressed] = useState(false);
 
   const handleClick = () => {
-    if (!isPressed) {
+    if (!isPressed && isOn) {
       setIsPressed(true);
       setPressedCharacters((prev) => prev + character);
 
@@ -26,9 +26,7 @@ const Button = ({ character }: { character: string }) => {
     <>
       <button
         onClick={handleClick}
-        className={clsx(
-          "preserve-3d relative flex h-8 w-8 cursor-pointer items-center justify-center border-2 border-darkPurple bg-purple transition-transform duration-300 ease-in-out",
-        )}
+        className="preserve-3d relative flex h-8 w-8 cursor-pointer items-center justify-center border-2 border-darkPurple bg-purple transition-transform duration-300 ease-in-out"
         style={{
           transform: `translateZ(${isPressed ? "0" : "1rem"})`,
           pointerEvents: isPressed ? "none" : "auto",

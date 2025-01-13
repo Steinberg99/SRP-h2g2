@@ -12,6 +12,7 @@ import Logo from "@/components/Logo";
 // Siblings
 import Button from "./components/Button";
 import DeleteButton from "./components/DeleteButton";
+import OnButton from "./components/OnButton";
 import SearchButton from "./components/SearchButton";
 import SpaceButton from "./components/SpaceButton";
 
@@ -93,7 +94,11 @@ const Display = () => {
             </div>
           </div>
 
-          <Logo className="mb-2 w-8 fill-darkPurple" />
+          <div className="preserve-3d flex justify-between">
+            <Logo className="mb-2 w-8 fill-darkPurple" />
+
+            <OnButton />
+          </div>
         </div>
       </div>
 

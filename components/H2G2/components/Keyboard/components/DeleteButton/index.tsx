@@ -8,18 +8,21 @@ import { LogicContext } from "@/contexts/LogicContext";
 
 const DeleteButton = () => {
   const [isPressed, setIsPressed] = useState(false);
-  const { pressedCharacters, setPressedCharacters } = useContext(LogicContext);
+  const { isOn, pressedCharacters, setPressedCharacters } =
+    useContext(LogicContext);
 
   const handleClick = () => {
-    setIsPressed(true);
+    if (!isPressed && isOn) {
+      setIsPressed(true);
 
-    if (pressedCharacters.length > 0) {
-      setPressedCharacters((prev) => prev.slice(0, -1));
+      if (pressedCharacters.length > 0) {
+        setPressedCharacters((prev) => prev.slice(0, -1));
+      }
+
+      setTimeout(() => {
+        setIsPressed(false);
+      }, 300);
     }
-
-    setTimeout(() => {
-      setIsPressed(false);
-    }, 300);
   };
 
   return (

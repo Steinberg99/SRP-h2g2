@@ -147,9 +147,17 @@ main {
   mix-blend-mode: overlay;
   pointer-events: none;
 
-  transition: transform 100ms ease-in-out;
+  transition:
+    transform 100ms ease-in-out,
+    opacity 300ms ease-in-out;
 
   animation: scrollGradient 8s linear infinite;
+
+  opacity: 0;
+}
+
+.shiny-display.is-on::before {
+  opacity: 1;
 }
 
 @keyframes scrollGradient {
@@ -294,4 +302,14 @@ main {
   src: url("/fonts/Naturaly.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+.glow {
+  background-image: radial-gradient(
+    circle at center,
+    theme("colors.lightRed") 0%,
+    transparent 80%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
 }

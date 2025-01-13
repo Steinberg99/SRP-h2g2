@@ -1,6 +1,7 @@
 "use client";
 
 // External
+import clsx from "clsx";
 import { useContext, useEffect, useRef, useState } from "react";
 
 // Internal
@@ -10,7 +11,7 @@ import Typewriter from "./components/TypeWriter";
 const Display = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const displayRef = useRef<HTMLDivElement | null>(null);
-  const { messages, pressedCharacters } = useContext(LogicContext);
+  const { isOn, messages, pressedCharacters } = useContext(LogicContext);
   const [lastMessage, setLastMessage] = useState("");
 
   useEffect(() => {
@@ -61,20 +62,29 @@ const Display = () => {
       >
         <div
           ref={displayRef}
-          className="display shiny-display relative z-10 flex h-full w-full flex-col justify-end overflow-hidden border-4 border-darkPurple bg-green p-4"
+          className={clsx(
+            "display shiny-display relative z-10 flex h-full w-full flex-col justify-end overflow-hidden border-4 border-darkPurple p-4 transition-colors duration-300 ease-in-out",
+            {
+              "is-on bg-green": isOn,
+              "bg-charcoal": !isOn,
+            },
+          )}
         >
-          {/* Render previously sent messages */}
-          {messages.slice(0, -1).map((message, index) => (
-            <span key={`message-${index}`}>{message}</span>
-          ))}
+          {isOn && (
+            <>
+              {messages.slice(0, -1).map((message, index) => (
+                <span key={`message-${index}`}>{message}</span>
+              ))}
 
-          <Typewriter
-            key={Math.random + lastMessage}
-            text={lastMessage}
-            delay={50}
-          />
+              <Typewriter
+                key={Math.random + lastMessage}
+                text={lastMessage}
+                delay={50}
+              />
 
-          <span className="blinking-cursor">{pressedCharacters}</span>
+              <span className="blinking-cursor">{pressedCharacters}</span>
+            </>
+          )}
         </div>
       </div>
 

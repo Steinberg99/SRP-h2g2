@@ -7,11 +7,11 @@ import { useContext, useState } from "react";
 import { LogicContext } from "@/contexts/LogicContext";
 
 const SpaceButton = () => {
-  const { setPressedCharacters } = useContext(LogicContext);
+  const { isOn, setPressedCharacters } = useContext(LogicContext);
   const [isPressed, setIsPressed] = useState(false);
 
   const handleClick = () => {
-    if (!isPressed) {
+    if (!isPressed && isOn) {
       setIsPressed(true);
       setPressedCharacters((prev) => prev + " ");
 

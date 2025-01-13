@@ -1,13 +1,15 @@
 "use client";
 
 // External
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 export const LogicContext = createContext({
+  isOn: false,
   isOpen: false,
   messages: [] as string[],
   pressedCharacters: "",
   search: (_query: string) => {},
+  setIsOn: (_isOn: boolean) => {},
   setIsOpen: (_isOpen: boolean) => {},
   setMessages: (_messages: string[] | ((prev: string[]) => string[])) => {},
   setPressedCharacters: (
@@ -19,6 +21,7 @@ const LogicProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [pressedCharacters, setPressedCharacters] = useState("");
   const [messages, setMessages] = useState<string[]>([]);
+  const [isOn, setIsOn] = useState(false);
 
   const getEntry = (query: string) => {
     switch (query) {
@@ -67,10 +70,12 @@ const LogicProvider = ({ children }: { children: ReactNode }) => {
   return (
     <LogicContext.Provider
       value={{
+        isOn,
         isOpen,
         messages,
         pressedCharacters,
         search,
+        setIsOn,
         setIsOpen,
         setMessages,
         setPressedCharacters,
