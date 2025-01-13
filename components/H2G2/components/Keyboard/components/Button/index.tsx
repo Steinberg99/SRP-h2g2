@@ -1,7 +1,6 @@
 "use client";
 
 // External
-import clsx from "clsx";
 import { useContext, useState } from "react";
 
 // Internal
